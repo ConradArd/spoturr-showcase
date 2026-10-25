@@ -1,6 +1,8 @@
 # Spoturr
 
-**Can I park here for free, right now, and for how long?** Spoturr answers that for every curb in New York City, on a live map.
+**Spoturr tells you which blocks are a waste of time when you're hunting for a free spot, based on how long you need to stay parked.**
+
+Want to leave the car through the weekend? Set the duration, skip the red, and head for the green.
 
 [**Download on the App Store**](https://apps.apple.com/app/id6450056814) · iPhone & iPad · Built and shipped solo
 
@@ -22,9 +24,9 @@
 ## What it does
 
 - **Green/red curb grid.** Every block face in the city, colored by whether you can park there for free right now.
-- **"Stay parked for at least…" dial.** Slide it to 2 hours, 1 day or 4 days, and the grid shows where you can stay that long without moving the car.
-- **Block inspection.** Tap a block to see each parking sign's rules in plain language, and which one bites next.
-- **Alarms.** Get notified before a rule kicks in (e.g. street cleaning in 10 minutes), as a rich notification with a map of the block.
+- **"Stay parked for at least…" dial.** Recolors the grid for a chosen minimum stay, from 6 hours up to 7 days. The ceiling follows the city's rule cycle (NYC's schedules repeat weekly), and holiday rule suspensions are factored in, so an upcoming holiday can surface blocks where a stay stretches past a week.
+- **Block View.** Tap a block to inspect its parking rules one at a time, with each rule's schedule and the exact curb zones it covers. Each zone shows whether you can park there right now, whether another rule affects it, and how long until its next rule transition.
+- **Alarms.** Get notified up to an hour before a rule kicks in or ends, as a rich notification with a map of the block, plus an optional email. Alarms can be one-off or repeating, can be snoozed right from the notification, and vehicle alarms reach every co-driver.
 - **Shared vehicles.** Co-drivers see where the car is parked, share its alarms, and get an activity feed of who moved it.
 
 ---
@@ -43,7 +45,7 @@
 
 Spoturr has two very different kinds of data, so they live in different systems:
 
-- **Parking rules** change rarely, are large, and must work offline. They're processed in a batch pipeline, stored in MySQL, and shipped to the phone as a local database plus pre-rendered map tiles.
+- **Parking rules** change rarely, are large, and must work offline. They're processed in a batch pipeline, stored in MySQL, and shipped to the phone as a local database plus pre-rendered map tiles. City data arrives in different shapes (NYC publishes individual signposts with arrows; San Francisco publishes some rules as curb segments), and the pipeline normalizes them into one city-agnostic model of blocks, curb zones and schedules, so the app never knows which city a rule came from.
 - **User data** (vehicles, pins, alarms, activity) changes constantly. Live shared state sits in Firestore with realtime listeners. Queryable records (alarms, activity feed) sit in MySQL behind a REST API.
 
 ```mermaid
