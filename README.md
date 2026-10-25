@@ -27,7 +27,7 @@ Want to leave the car through the weekend? Set the duration, skip the red, and h
 - **"Stay parked for at least…" dial.** Recolors the grid for a chosen minimum stay, from 6 hours up to 7 days. The ceiling follows the city's rule cycle (NYC's schedules repeat weekly), and holiday rule suspensions are factored in, so an upcoming holiday can surface blocks where a stay stretches past a week.
 - **Block View.** Tap a block to inspect its parking rules one at a time, with each rule's schedule and the exact curb zones it covers. Each zone shows whether you can park there right now, whether another rule affects it, and how long until its next rule transition.
 - **Alarms.** Get notified up to an hour before a rule kicks in or ends, as a rich notification with a map of the block, plus an optional email. Alarms can be one-off or repeating, can be snoozed right from the notification, and vehicle alarms reach every co-driver.
-- **Shared vehicles.** Co-drivers see where the car is parked, share its alarms, and get an activity feed of who moved it.
+- **Shared vehicles.** A vehicle has one admin and up to 10 drivers, and any member can invite others by link or QR code. Members see where the car is parked, get a push notification when it moves, and have an activity feed of who moved it. Alarms can be targeted at a vehicle, in which case every co-driver gets the push notification, and each co-driver can opt in to email per vehicle.
 
 ---
 
