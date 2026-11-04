@@ -56,20 +56,20 @@ Spoturr has two very different kinds of data, so they live in different systems:
 ```mermaid
 flowchart LR
     subgraph Pipeline["Batch pipeline (Java)"]
-        A[City sign data] --> B[Parse rules into block units]
-        B --> C[Render tiles per day, time slot & stay duration]
+        A[City sign data] --> B[Parse rules<br/>into block units]
+        B --> C[Render tiles<br/>per day, slot<br/>& stay duration]
     end
 
     C --> S[(Cloud Storage<br/>tiles + city data)]
-    B --> M[(MySQL<br/>rules, alarms, activity)]
+    B --> M[(MySQL<br/>rules, alarms,<br/>activity)]
 
     App[iOS app] -- download & cache --> S
-    App <-- realtime listeners --> F[(Firestore<br/>vehicles, pins, profiles)]
+    App <-- realtime listeners --> F[(Firestore<br/>vehicles, pins,<br/>profiles)]
     App -- REST --> API[App Engine API] --> M
 
-    CF[Cloud Functions<br/>alarm dispatcher, vehicle ops] --> M
+    CF[Cloud Functions<br/>alarm dispatcher,<br/>vehicle ops] --> M
     CF --> F
-    CF -- push --> APNs --> NSE[Notification Service Extension]
+    CF -- push --> APNs --> NSE[Notification<br/>Service<br/>Extension]
 ```
 
 ---
